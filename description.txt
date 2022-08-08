@@ -1,4 +1,4 @@
-git clone
+# Push changes to heroku and git repo
 
 git add .
 git commit -m "comment"

@@ -134,3 +134,14 @@ def get():
     result= summary.to_json()
     cat=prediction.tolist()
     return jsonify(cat,result)
+
+@app.route('/data', methods = ['POST'])
+def post():
+    posted_data = request.get_json()
+    secure_url= posted_data['secure_url']
+    cand_id=posted_data['cand_id']
+
+    cloud_resume_url=posted_data['secure_url']
+    cand_id=posted_data['cand_id']
+    return jsonify(cand_id,cloud_resume_url)      
+    
