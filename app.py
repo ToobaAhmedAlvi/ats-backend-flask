@@ -86,8 +86,7 @@ def home_view():
         return "Hello World!"
 
 #@app.route("/terms", methods=['GET'])
-def get():
-    return jsonify(cat,result)
+
 
 
 @app.route('/data', methods = ['POST'])
