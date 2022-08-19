@@ -12,8 +12,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 import matplotlib.pyplot as plt
 import pickle
+import json
 from pymongo import MongoClient
 import pymongo
+import requests
 app = Flask(__name__)
 
 # Initialize a text empty etring variable
@@ -24,31 +26,54 @@ load_dotenv()
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-'''
-
-myclient = pymongo.MongoClient("mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/myFirstDatabase")
+"""
+myclient = pymongo.MongoClient("mongodb+srv://ayesha_user-21:757001ank@cluster0.lvksl.mongodb.net/AIATSDB?retryWrites=true&w=majority")
 # DatabseName
-mydb = myclient["AIATS"]
+mydb = myclient["AIATSDB"]
+print(mydb)
+
+#db=myclient.AIATSDB
+# Issue the serverStatus command and print the results
+##serverStatusResult=db.command("serverStatus")
+#print(serverStatusResult)
+
+"""
 
 item_1 = {
-"cand_res_id" : "U1IT00001",
-"item_name" : "Blender",
-"max_discount" : "10%",
-"batch_number" : "RR450020FRG",
-"price" : 340,
-"category" : "kitchen appliance"
+    "cand_id": "EUR-C-345",
+    "job_id": "EUR-JD-456",
+    "resume_rank": "4",
+    "resume_url": "abs@cloudinary.com"
 }
-
+"""
 # Table name
-mycol = mydb["Cand_Resume_Shortlist"] 
+mycol = mydb["shortlistedresume"] 
 
 
 x = mycol.insert_one(item_1)
+print(x)
+print(x.inserted_id)
 
 # collection_name = dbname["AIATS"]
 
+url="https://atsbackend.herokuapp.com/api/shortlistresume/shortlistnewresume"
+headers = {"Content-Type": "application/json; charset=utf-8"}
+response = requests.post(url, headers=headers, json=item_1)
+print("Status Code", response.status_code)
+print("JSON Response ", response.json())
+"""
+url="https://atsbackend.herokuapp.com/api/shortlistresume/shortlistnewresume"
+headers = {"Content-Type": "application/json"}
+response = requests.post(url, headers=headers, json=item_1)
+print("Status Code", response.status_code)
+print("JSON Response ", response.json())
+#json_string=json.dumps(item_1)
+#print(json_string)
+#x = requests.post(url, data)
 
-'''
+#print(x.text)
+
+
 
 @app.route("/")
 def home_view():
@@ -188,13 +213,12 @@ summary = pd.DataFrame(scores,index=terms.keys(),columns=['score'])
 #.sort_values(by='score',ascending=None)
 print(summary.iloc[prediction]) 
 print(summary)
-'''
+
 pie = plt.figure(figsize=(10,10))
 plt.pie(summary['score'], labels=summary.index, explode = (0.1,0), autopct='%1.0f%%',shadow=True,startangle=90)
 plt.title('EURONET Hiring Candidate - Resume Decomposition by Areas')
 plt.axis('equal')
 plt.show()
-'''
 
 
 

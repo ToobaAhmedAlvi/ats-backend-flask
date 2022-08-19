@@ -26,3 +26,4 @@ flask-cors
 python-dotenv
 requests
 pymongo==4.2.0
+json
