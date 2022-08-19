@@ -21,3 +21,8 @@ click==8.1.3
 colorama==0.4.5
 textract
 matplotlib
+cloudinary 
+flask-cors
+python-dotenv
+requests
+pymongo==4.2.0
