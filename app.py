@@ -146,12 +146,12 @@ terms = {
                      'SAP Training ','PMP Certification','MS Excel','Bachelors','MS Word','verbal skills','time management',
                       'resource planning','Sprint','Project','Issues','Masters'
                      
-                      ]}
+                      ]
+}
     
     
             
 
-       
 developer = 0
 consultant = 0
 analyst = 0
@@ -218,13 +218,13 @@ summary = pd.DataFrame(scores,index=terms.keys(),columns=['score'])
 #.sort_values(by='score',ascending=None)
 print(summary.iloc[prediction]) 
 print(summary)
-
+'''
 pie = plt.figure(figsize=(10,10))
 plt.pie(summary['score'], labels=summary.index, explode = (0.1,0), autopct='%1.0f%%',shadow=True,startangle=90)
 plt.title('EURONET Hiring Candidate - Resume Decomposition by Areas')
 plt.axis('equal')
 plt.show()
-
+'''
 
 
 
