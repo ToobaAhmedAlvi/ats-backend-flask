@@ -67,13 +67,19 @@ headers = {"Content-Type": "application/json"}
 response = requests.post(url, headers=headers, json=item_1)
 print("Status Code", response.status_code)
 print("JSON Response ", response.json())
+'''
+url="https://atsbackend.herokuapp.com/api/shortlistresume/shortlistnewresume"
+headers = {"Content-Type": "application/json"}
+response = requests.post(url, headers=headers, json=item_1)
+print("Status Code", response.status_code)
+print("JSON Response ", response.json())
 #json_string=json.dumps(item_1)
 #print(json_string)
 #x = requests.post(url, data)
 
 #print(x.text)
 
-
+'''
 
 @app.route("/")
 def home_view():
