@@ -1,11 +1,10 @@
-
 import PyPDF2
 import textract
 import re
 import string
 import pandas as pd
 import matplotlib.pyplot as plt
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
@@ -16,6 +15,7 @@ import json
 from pymongo import MongoClient
 import pymongo
 import requests
+
 app = Flask(__name__)
 
 # Initialize a text empty etring variable
@@ -50,13 +50,11 @@ def home_view():
 
 @app.route('/data', methods = ['POST'])
 def post():
-    posted_data = request.get_json()
+    posted_data = request.get_json(force=True)
     MLcand_id=posted_data['MLcand_id']
     MLjob_id=posted_data['MLjob_id']
     cloudpublic_id=posted_data['cloudpublic_id']
-    cloud_resume_url=posted_data['secure_url']
-    
-    
+    cloud_resume_url=posted_data['secure_url']      
     return jsonify(MLcand_id,MLjob_id,cloudpublic_id,cloud_resume_url)
 
 var = cloudinary.api.resource("hmwbckieimbjzs9lwdkh")
