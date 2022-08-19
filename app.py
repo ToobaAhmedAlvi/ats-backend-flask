@@ -96,9 +96,9 @@ def post():
     MLjob_id=posted_data['MLjob_id']
     cloudpublic_id=posted_data['cloudpublic_id']
     cloud_resume_url=posted_data['secure_url']
-    candshortlisted_id=posted_data['candshortlisted_id']
     
-    return jsonify(MLcand_id,MLjob_id,cloudpublic_id,cloud_resume_url,candshortlisted_id)
+    
+    return jsonify(MLcand_id,MLjob_id,cloudpublic_id,cloud_resume_url)
 
 var = cloudinary.api.resource("hmwbckieimbjzs9lwdkh")
 data=var['info']['ocr']['adv_ocr']['data']
