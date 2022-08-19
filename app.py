@@ -26,18 +26,7 @@ load_dotenv()
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-"""
-myclient = pymongo.MongoClient("mongodb+srv://ayesha_user-21:757001ank@cluster0.lvksl.mongodb.net/AIATSDB?retryWrites=true&w=majority")
-# DatabseName
-mydb = myclient["AIATSDB"]
-print(mydb)
 
-#db=myclient.AIATSDB
-# Issue the serverStatus command and print the results
-##serverStatusResult=db.command("serverStatus")
-#print(serverStatusResult)
-
-"""
 
 item_1 = {
     "cand_id": "EUR-C-345",
@@ -45,41 +34,11 @@ item_1 = {
     "resume_rank": "4",
     "resume_url": "abs@cloudinary.com"
 }
-"""
-# Table name
-mycol = mydb["shortlistedresume"] 
-
-
-x = mycol.insert_one(item_1)
-print(x)
-print(x.inserted_id)
-
-# collection_name = dbname["AIATS"]
-
-url="https://atsbackend.herokuapp.com/api/shortlistresume/shortlistnewresume"
-headers = {"Content-Type": "application/json; charset=utf-8"}
-response = requests.post(url, headers=headers, json=item_1)
-print("Status Code", response.status_code)
-print("JSON Response ", response.json())
-"""
 url="https://atsbackend.herokuapp.com/api/shortlistresume/shortlistnewresume"
 headers = {"Content-Type": "application/json"}
 response = requests.post(url, headers=headers, json=item_1)
 print("Status Code", response.status_code)
 print("JSON Response ", response.json())
-'''
-url="https://atsbackend.herokuapp.com/api/shortlistresume/shortlistnewresume"
-headers = {"Content-Type": "application/json"}
-response = requests.post(url, headers=headers, json=item_1)
-print("Status Code", response.status_code)
-print("JSON Response ", response.json())
-#json_string=json.dumps(item_1)
-#print(json_string)
-#x = requests.post(url, data)
-
-#print(x.text)
-
-'''
 
 @app.route("/")
 def home_view():
